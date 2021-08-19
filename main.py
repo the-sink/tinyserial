@@ -5,6 +5,8 @@ import threading
 import pygubu
 import time
 
+# TODO: comments for the love of god
+
 class SerialTerminal:
     def __init__(self):
 
