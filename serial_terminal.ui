@@ -25,6 +25,30 @@
                     <property name="tearoff">false</property>
                   </object>
                 </child>
+                <child>
+                  <object class="tk.Menuitem.Separator" id="separator2" />
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Menuitem.Submenu" id="window_menu">
+                <property name="label" translatable="yes">Window</property>
+                <property name="tearoff">false</property>
+                <child>
+                  <object class="tk.Menuitem.Submenu" id="theme_menu">
+                    <property name="label" translatable="yes">Theme</property>
+                    <property name="tearoff">false</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="tk.Menuitem.Separator" id="separator1" />
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Menuitem.Command" id="status">
+                <property name="label" translatable="yes">Disconnected</property>
+                <property name="state">disabled</property>
               </object>
             </child>
           </object>
@@ -57,7 +81,7 @@
             <child>
               <object class="ttk.Button" id="send_button">
                 <property cbtype="simple" name="command" type="command">write_serial</property>
-                <property name="default">normal</property>
+                <property name="state">disabled</property>
                 <property name="text" translatable="yes">Send</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -85,10 +109,9 @@
           </object>
         </child>
         <child>
-          <object class="tk.Text" id="output">
-            <property name="font">{Consolas} 12 {}</property>
-            <property name="height">10</property>
-            <property name="width">50</property>
+          <object class="ttk.Frame" id="output_frame">
+            <property name="height">200</property>
+            <property name="width">200</property>
             <layout manager="grid">
               <property name="column">0</property>
               <property name="propagate">True</property>
@@ -97,6 +120,34 @@
               <property id="0" name="weight" type="col">1</property>
               <property id="0" name="weight" type="row">1</property>
             </layout>
+            <child>
+              <object class="tk.Text" id="output">
+                <property name="font">{Consolas} 12 {}</property>
+                <property name="height">10</property>
+                <property name="width">50</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="propagate">True</property>
+                  <property name="row">0</property>
+                  <property name="sticky">nsew</property>
+                  <property id="0" name="weight" type="col">1</property>
+                  <property id="0" name="weight" type="row">1</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Scrollbar" id="output_scroll">
+                <property name="orient">vertical</property>
+                <layout manager="grid">
+                  <property name="column">1</property>
+                  <property name="propagate">True</property>
+                  <property name="row">0</property>
+                  <property name="sticky">nse</property>
+                  <property id="1" name="weight" type="col">0</property>
+                  <property id="0" name="weight" type="row">1</property>
+                </layout>
+              </object>
+            </child>
           </object>
         </child>
       </object>
