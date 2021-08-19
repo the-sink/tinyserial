@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.1">
+  <object class="tk.Toplevel" id="main_window">
+    <property name="height">200</property>
+    <property name="title" translatable="yes">Serial Terminal</property>
+    <property name="width">200</property>
+    <child>
+      <object class="pygubu.builder.widgets.toplevelmenu" id="menu_root">
+        <child>
+          <object class="tk.Menu" id="menu_bar">
+            <property name="tearoff">false</property>
+            <child>
+              <object class="tk.Menuitem.Submenu" id="serial_menu">
+                <property name="label" translatable="yes">Serial</property>
+                <property name="tearoff">false</property>
+                <child>
+                  <object class="tk.Menuitem.Submenu" id="serial_port">
+                    <property name="label" translatable="yes">Port</property>
+                    <property name="tearoff">false</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="tk.Menuitem.Submenu" id="baud_rate">
+                    <property name="label" translatable="yes">Baud rate</property>
+                    <property name="tearoff">false</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Frame" id="root">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="pack">
+          <property name="anchor">center</property>
+          <property name="expand">true</property>
+          <property name="fill">both</property>
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+        <child>
+          <object class="ttk.Frame" id="entry_frame">
+            <property name="height">28</property>
+            <property name="width">200</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">False</property>
+              <property name="row">1</property>
+              <property name="sticky">nsew</property>
+              <property id="0" name="weight" type="col">1</property>
+              <property id="1" name="weight" type="row">0</property>
+            </layout>
+            <child>
+              <object class="ttk.Button" id="send_button">
+                <property cbtype="simple" name="command" type="command">write_serial</property>
+                <property name="default">normal</property>
+                <property name="text" translatable="yes">Send</property>
+                <layout manager="grid">
+                  <property name="column">1</property>
+                  <property name="propagate">False</property>
+                  <property name="row">0</property>
+                  <property name="sticky">e</property>
+                  <property id="1" name="weight" type="col">0</property>
+                  <property id="0" name="weight" type="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Entry" id="input">
+                <property name="font">{Consolas} 12 {}</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="propagate">False</property>
+                  <property name="row">0</property>
+                  <property name="sticky">nsew</property>
+                  <property id="0" name="weight" type="col">1</property>
+                  <property id="0" name="weight" type="row">0</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Text" id="output">
+            <property name="font">{Consolas} 12 {}</property>
+            <property name="height">10</property>
+            <property name="width">50</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+              <property name="sticky">nsew</property>
+              <property id="0" name="weight" type="col">1</property>
+              <property id="0" name="weight" type="row">1</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
