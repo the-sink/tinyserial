@@ -27,7 +27,8 @@ class SerialTerminal:
 
         for speed in self.available_baud_rates:
             self.builder.get_object('baud_rate').add_radiobutton(label=str(speed), var=self.baud_rate, value=speed)
-
+            
+        # TODO: Reload port list when Serial submenu is opened
         for port in serial.tools.list_ports.comports():
             self.builder.get_object('serial_port').add_radiobutton(label=port.name, var=self.serial_port, value=port.name)
 
@@ -47,6 +48,7 @@ class SerialTerminal:
                 self.write_to_output(data_str)
             time.sleep(0.01)
 
+    # TODO: Ensure output echo starts with a newline
     def write_serial(self):
         self.serial.write(str.encode(self.input.get()))
         self.write_to_output("> " + self.input.get() + "\n")
