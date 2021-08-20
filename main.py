@@ -99,7 +99,9 @@ class SerialTerminal:
 
     # displays a prompt to input a custom baud rate
     def ask_custom_baud_rate(self):
-        self.baud_rate.set(askinteger('Custom', 'Input a custom baud rate:'))
+        prompt = askinteger('Custom', 'Input a custom baud rate:')
+        if prompt:
+            self.baud_rate.set(prompt)
 
     # updates list of available ports in the Serial menu
     def update_port_list(self):

@@ -131,6 +131,7 @@
               <object class="tk.Text" id="output">
                 <property name="font">{Consolas} 12 {}</property>
                 <property name="height">10</property>
+                <property name="state">disabled</property>
                 <property name="width">50</property>
                 <layout manager="grid">
                   <property name="column">0</property>
