@@ -2,12 +2,13 @@ import serial
 import serial.tools.list_ports
 import tkinter as tk
 import tkinter.ttk as ttk
-from tkinter.simpledialog import askinteger
+from tkinter.simpledialog import askinteger,askstring
 import threading
 import pygubu
 import configparser
 import time
 import sys
+import os
 
 # Set up configparser and read settings (if it exists)
 
@@ -38,6 +39,7 @@ class SerialTerminal:
         # get required ui elements
         self.main_window = builder.get_object('main_window')
         self.menu_bar = builder.get_object('menu_bar')
+        self.file_menu = builder.get_object('file_menu')
         self.serial_menu = builder.get_object('serial_menu')
         self.window_menu = builder.get_object('window_menu')
         self.baud_rate_menu = builder.get_object('baud_rate')
@@ -63,6 +65,10 @@ class SerialTerminal:
         self.connected = False
 
         # build runtime ui elements
+        self.file_menu.add_command(label='Save output to file...', command=self.save_to_file)
+        self.file_menu.add_separator()
+        self.file_menu.add_command(label='Quit', command=self.shutdown)
+
         self.window_menu.add_checkbutton(label='Clear Input on Send', var=self.clear_output_on_send)
         self.window_menu.add_checkbutton(label='Autoscroll', var=self.autoscroll)
         self.window_menu.add_separator()
@@ -169,6 +175,15 @@ class SerialTerminal:
         self.style.theme_use(selected_theme)
         settings['theme'] = selected_theme
         self.save_settings()
+
+    def save_to_file(self):
+        prompt = askstring('Save to file', 'File name to save to:')
+        if prompt and len(prompt) > 0:
+            if not os.path.exists('output'):
+                os.makedirs('output')
+            file = open(f'output/{prompt}.txt',"w+")
+            file.write(self.output.get('1.0', tk.END))
+            file.close()
 
     # saves settings to settings.ini
     def save_settings(self):

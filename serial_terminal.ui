@@ -1,14 +1,21 @@
 <?xml version='1.0' encoding='utf-8'?>
 <interface version="1.1">
   <object class="tk.Toplevel" id="main_window">
-    <property name="height">200</property>
+    <property name="height">800</property>
+    <property name="minsize">275|150</property>
     <property name="title" translatable="yes">Serial Terminal</property>
-    <property name="width">200</property>
+    <property name="width">420</property>
     <child>
       <object class="pygubu.builder.widgets.toplevelmenu" id="menu_root">
         <child>
           <object class="tk.Menu" id="menu_bar">
             <property name="tearoff">false</property>
+            <child>
+              <object class="tk.Menuitem.Submenu" id="file_menu">
+                <property name="label" translatable="yes">File</property>
+                <property name="tearoff">false</property>
+              </object>
+            </child>
             <child>
               <object class="tk.Menuitem.Submenu" id="serial_menu">
                 <property name="label" translatable="yes">Serial</property>
@@ -57,8 +64,8 @@
     </child>
     <child>
       <object class="ttk.Frame" id="root">
-        <property name="height">200</property>
-        <property name="width">200</property>
+        <property name="height">420</property>
+        <property name="width">800</property>
         <layout manager="pack">
           <property name="anchor">center</property>
           <property name="expand">true</property>
