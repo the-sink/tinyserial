@@ -151,7 +151,7 @@ class SerialTerminal:
         else:
             self.serial.close()
         try:
-            self.menu_bar.entryconfigure(2, label=self.connected and 'Connected' or 'Disconnected')
+            self.menu_bar.entryconfigure(3, label=self.connected and 'Connected' or 'Disconnected')
             self.serial_menu.entryconfigure(3, label=self.connected and 'Disconnect' or 'Connect')
             self.send_button['state'] = self.connected and tk.NORMAL or tk.DISABLED
         except RuntimeError: # occurs when terminal is being closed
