@@ -8,6 +8,6 @@ A very small serial terminal built using pySerial, Tkinter, and pygubu.
 ## Usage
 
 ```
-pip install -Ur pip.req
+pip install -Ur requirements.txt
 py main.py
 ```
